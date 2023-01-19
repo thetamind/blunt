@@ -139,7 +139,8 @@ defmodule Blunt.BoundedContext.Proxy do
     {name, opts}
   end
 
-  def dispatch(message_module, values, proxy_opts, dispatch_opts, internal_opts \\ []) do
+  def dispatch(message_module, values, proxy_opts, dispatch_opts, internal_opts \\ [])
+      when is_list(proxy_opts) and is_list(dispatch_opts) and is_list(internal_opts) do
     {field_values, opts} =
       dispatch_opts
       |> Keyword.merge(proxy_opts)
